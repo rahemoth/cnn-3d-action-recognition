@@ -87,7 +87,7 @@ class CNN2D(nn.Module):
         """
         # Reshape from (batch, num_frames, C, H, W) to (batch, num_frames*C, H, W)
         batch_size = x.size(0)
-        x = x.view(batch_size, self.num_frames * 3, x.size(3), x.size(4))
+        x = x.reshape(batch_size, self.num_frames * 3, x.size(3), x.size(4))
         
         # Convolutional layers
         x = self.conv_layers(x)

@@ -47,7 +47,7 @@ class ActionPredictor:
     
     def load_checkpoint(self, checkpoint_path: str):
         """Load model weights from checkpoint."""
-        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        checkpoint = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
         self.model.load_state_dict(checkpoint['model_state_dict'])
         print(f"Loaded model from {checkpoint_path}")
     
