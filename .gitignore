@@ -44,8 +44,8 @@ runs/
 logs/
 
 # Data
-data/
-datasets/
+/data/
+/datasets/
 *.mp4
 *.avi
 *.jpg
