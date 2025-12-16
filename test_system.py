@@ -92,7 +92,11 @@ def test_utils():
     p2 = np.array([0, 0, 0])
     p3 = np.array([0, 1, 0])
     angle = calculate_angle(p1, p2, p3)
-    assert abs(angle - 90.0) < 1e-6, "Angle calculation failed"
+    assert angle is not None and abs(angle - 90.0) < 1e-6, "Angle calculation failed"
+    
+    # Test degenerate case (coincident points)
+    angle_degenerate = calculate_angle(p2, p2, p3)
+    assert angle_degenerate is None, "Should return None for degenerate case"
     
     # Test distance calculation
     dist = calculate_distance(p1, p3)

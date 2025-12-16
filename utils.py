@@ -13,13 +13,21 @@ def calculate_angle(point1, point2, point3):
         point1, point2, point3: 3D points as numpy arrays
         
     Returns:
-        angle: Angle in degrees
+        angle: Angle in degrees, or None if vectors are degenerate
     """
     vector1 = point1 - point2
     vector2 = point3 - point2
     
+    # Calculate norms
+    norm1 = np.linalg.norm(vector1)
+    norm2 = np.linalg.norm(vector2)
+    
+    # Handle degenerate cases (zero-length vectors)
+    if norm1 < 1e-10 or norm2 < 1e-10:
+        return None
+    
     # Calculate angle
-    cos_angle = np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
+    cos_angle = np.dot(vector1, vector2) / (norm1 * norm2)
     angle = np.arccos(np.clip(cos_angle, -1.0, 1.0))
     
     return np.degrees(angle)

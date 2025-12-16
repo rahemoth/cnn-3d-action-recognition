@@ -5,6 +5,8 @@ Creates a simple stick figure and processes it through the system.
 
 import cv2
 import numpy as np
+import os
+import tempfile
 from pose_detector import PoseDetector
 from skeleton_3d import Skeleton3D
 import matplotlib.pyplot as plt
@@ -38,9 +40,13 @@ def validate_system():
     print("Creating test image...")
     test_img = create_test_image()
     
+    # Create temp directory for output
+    temp_dir = tempfile.gettempdir()
+    test_img_path = os.path.join(temp_dir, 'test_stick_figure.png')
+    
     # Save test image
-    cv2.imwrite('/tmp/test_stick_figure.png', test_img)
-    print("✓ Test image saved to /tmp/test_stick_figure.png")
+    cv2.imwrite(test_img_path, test_img)
+    print(f"✓ Test image saved to {test_img_path}")
     
     print("\nInitializing pose detector...")
     detector = PoseDetector()
@@ -72,8 +78,9 @@ def validate_system():
         print("  The system works best with actual human images/videos")
     
     # Save annotated image
-    cv2.imwrite('/tmp/test_annotated.png', annotated)
-    print("\n✓ Annotated image saved to /tmp/test_annotated.png")
+    annotated_path = os.path.join(temp_dir, 'test_annotated.png')
+    cv2.imwrite(annotated_path, annotated)
+    print(f"\n✓ Annotated image saved to {annotated_path}")
     
     # Clean up
     detector.close()

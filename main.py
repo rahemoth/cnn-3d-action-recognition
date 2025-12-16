@@ -68,7 +68,8 @@ class BodyMotion3D:
                 ret, frame = self.cap.read()
                 
                 if not ret:
-                    if isinstance(self.source, str):
+                    # Check if source is a video file (not webcam)
+                    if isinstance(self.source, str) and self.source not in ['/dev/video0', '/dev/video1']:
                         # If video file ended, loop it
                         self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                         continue

@@ -6,7 +6,6 @@ Creates and displays 3D models of human body from keypoints.
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from matplotlib.animation import FuncAnimation
 
 
 class Skeleton3D:
