@@ -32,7 +32,7 @@
 │    (pose_detector.py)           │   │   (skeleton_3d.py)          │
 │                                 │   │                             │
 │  • MediaPipe Pose integration   │   │  • Matplotlib 3D plotting   │
-│  • Keypoint extraction (33pts) │   │  • Skeleton rendering       │
+│  • Keypoint extraction (33pts)  │   │  • Skeleton rendering       │
 │  • 3D coordinate calculation    │   │  • Coordinate transform     │
 │  • Key body points selection    │   │  • View management          │
 └───────────────┬─────────────────┘   └─────────────────────────────┘
